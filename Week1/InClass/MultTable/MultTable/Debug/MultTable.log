@@ -1,0 +1,6 @@
+﻿  Main.c
+c:\users\blake reset\source\repos\csc-373\week1\inclass\multtable\multtable\main.c(30): warning C4473: 'scanf_s' : not enough arguments passed for format string
+  c:\users\blake reset\source\repos\csc-373\week1\inclass\multtable\multtable\main.c(30): note: placeholders and their parameters expect 2 variadic arguments, but 1 were provided
+  c:\users\blake reset\source\repos\csc-373\week1\inclass\multtable\multtable\main.c(30): note: the missing variadic argument 2 is required by format string '%c'
+  c:\users\blake reset\source\repos\csc-373\week1\inclass\multtable\multtable\main.c(30): note: this argument is used as a buffer size
+  MultTable.vcxproj -> C:\Users\Blake Reset\source\repos\CSC-373\Week1\InClass\MultTable\Debug\MultTable.exe
