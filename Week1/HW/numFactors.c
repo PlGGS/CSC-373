@@ -10,8 +10,8 @@ void obtainNumber(const char* questionPtr, int* numberPtr)
 	do
 	{
 		printf("Please enter a %s greater than 1\n", questionPtr);
-		scanf_s("%d", numberPtr);
-	} while (numberPtr <= 1);
+		scanf_s("%d", numberPtr); //Use scanf if in Linux, VS2017 requires scanf_s
+	} while (*numberPtr <= 1);
 }
 
 
@@ -19,18 +19,29 @@ int	countFactors(int dividend, int divisor)
 {
 	int	count = 0;
 
-	while (dividend % divisor == 0)
+	while (dividend % divisor == 0) //This should be while (dividend >= divisor) if you actually want the number of factors and not just the remainder
 	{
-		dividend = dividend / divisor;
+		dividend = dividend / divisor; //This should technically be dividend = dividend - divisor if you actually want number of factors and not just the remainder
 		count++;
 	}
 
 	return(count);
 }
 
+int	countActualFactors(int dividend, int divisor)
+{
+	int	count = 0;
 
+	while (dividend >= divisor)
+	{
+		dividend = dividend - divisor;
+		count++;
+	}
 
-int		main()
+	return(count);
+}
+
+int	main()
 {
 	int	dividend;
 	int	divisor;
@@ -40,8 +51,11 @@ int		main()
 		obtainNumber("dividend", &dividend);
 		obtainNumber("divisor", &divisor);
 
-		printf("%d goes into %d %d time(s).\n",
+		printf("%d goes into %d %d times.\n",
 			divisor, dividend, countFactors(dividend, divisor)
+		);
+		printf("%d actually goes into %d %d times.\n",
+			divisor, dividend, countActualFactors(dividend, divisor)
 		);
 	}
 
