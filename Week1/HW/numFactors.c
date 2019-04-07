@@ -19,7 +19,11 @@ int	countFactors(int dividend, int divisor)
 {
 	int	count = 0;
 
-
+	while (dividend % divisor == 0)
+	{
+		dividend = dividend / divisor;
+		count++;
+	}
 
 	return(count);
 }
@@ -36,7 +40,7 @@ int		main()
 		obtainNumber("dividend", &dividend);
 		obtainNumber("divisor", &divisor);
 
-		printf("%d goes into %d %d times.\n",
+		printf("%d goes into %d %d time(s).\n",
 			divisor, dividend, countFactors(dividend, divisor)
 		);
 	}
