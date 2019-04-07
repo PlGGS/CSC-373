@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\numFactors.c">
+    <ClCompile Include="numFactors.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

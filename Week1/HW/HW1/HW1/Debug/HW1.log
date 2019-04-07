@@ -1,3 +1,4 @@
 ﻿  numFactors.c
-c:\users\blake reset\source\repos\csc-373\week1\hw\numfactors.c(8): warning C4101: 'buffer': unreferenced local variable
-  HW1.vcxproj -> C:\Users\Blake Reset\source\repos\CSC-373\Week1\HW\HW1\Debug\HW1.exe
+c:\users\blake reset\source\repos\plggs\csc-373\week1\hw\hw1\hw1\numfactors.c(8): warning C4101: 'buffer': unreferenced local variable
+  LINK : C:\Users\Blake Reset\source\repos\PlGGS\CSC-373\Week1\HW\HW1\Debug\HW1.exe not found or not built by the last incremental link; performing full link
+  HW1.vcxproj -> C:\Users\Blake Reset\source\repos\PlGGS\CSC-373\Week1\HW\HW1\Debug\HW1.exe
