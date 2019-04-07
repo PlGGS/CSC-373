@@ -1,0 +1,4 @@
+﻿  numFactors.c
+c:\users\blake reset\source\repos\csc-373\week1\hw\numfactors.c(14): warning C4047: '<=': 'int *' differs in levels of indirection from 'int'
+c:\users\blake reset\source\repos\csc-373\week1\hw\numfactors.c(8): warning C4101: 'buffer': unreferenced local variable
+  HW1.vcxproj -> C:\Users\Blake Reset\source\repos\CSC-373\Week1\HW\HW1\Debug\HW1.exe

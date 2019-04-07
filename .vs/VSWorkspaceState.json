@@ -2,8 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\Week1",
-    "\\Week1\\InClass"
+    "\\Week1\\HW",
+    "\\Week1\\InClass",
+    "\\Week1\\InClass\\MultTable",
+    "\\Week1\\InClass\\MultTable\\MultTable"
   ],
-  "SelectedNode": "\\Week1\\InClass",
+  "SelectedNode": "\\Week1\\HW\\numFactors.c",
   "PreviewInSolutionExplorer": false
 }
