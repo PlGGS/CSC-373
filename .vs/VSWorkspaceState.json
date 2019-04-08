@@ -3,10 +3,14 @@
     "",
     "\\Week1",
     "\\Week1\\HW",
+    "\\Week1\\HW\\HW1",
+    "\\Week1\\HW\\HW1\\HW1",
     "\\Week1\\InClass",
     "\\Week1\\InClass\\MultTable",
-    "\\Week1\\InClass\\MultTable\\MultTable"
+    "\\Week1\\InClass\\MultTable\\MultTable",
+    "\\Week2",
+    "\\Week2\\InClass"
   ],
-  "SelectedNode": "\\Week1\\HW\\numFactors.c",
+  "SelectedNode": "\\Week2\\InClass",
   "PreviewInSolutionExplorer": false
 }
