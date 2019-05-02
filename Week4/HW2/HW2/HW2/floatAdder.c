@@ -87,22 +87,23 @@
 //  PURPOSE:  To return 1 if 'f' is 0.0 or -0.0.  Returns 0 otherwise.
 int isZero(float f)
 {
-	unsigned int	u = *(unsigned int*)&f;
+	unsigned int u = *(unsigned int*)&f;
 
-	//  Your code here
-
-	return(0 /* Perhaps change this */);
+	return((int)((u & EVERYTHING_BUT_SIGN_MASK) == 0));
 }
 
 
 //  PURPOSE:  To return the +1 if the sign of 'f' is positive, or -1 otherwise.
 int	getSign(float f)
 {
-	unsigned int	u = *(unsigned int*)&f;
+	unsigned int u = *(unsigned int*)&f;
+	
+	if ((u & SIGN_MASK) == 0)
+	{
+		return(1);
+	}
 
-	//  Your code here
-
-	return(0 /* Perhaps change this */);
+	return(-1);
 }
 
 
@@ -111,12 +112,10 @@ int	getSign(float f)
 //	(Does _not_ return the bit pattern.)
 int getPowerOf2(float f)
 {
-	unsigned int u = *(unsigned int*)&f;
-	unsigned int i = 0; /* Perhaps change this */
+	unsigned int u = (*(unsigned int*)&f) >> EXPONENT_SHIFT;
+	int i = u - INFINITE_POWER_OF_2 + 1;
 
-	//  Your code here
-
-	return(0 /* Perhaps change this */);
+	return i;
 }
 
 
@@ -126,10 +125,14 @@ int getPowerOf2(float f)
 unsigned int getMantissa(float f)
 {
 	unsigned int mantissa = *(unsigned int*)&f;
+	mantissa = mantissa & MANTISSA_MASK; 
+	
+	if (f > 1e-38)
+	{ 
+		return (mantissa | MANTISSA_HIDDEN_BIT);
+	}
 
-	//  Your code here
-
-	return(0 /* Perhaps change this */);
+	return(mantissa);
 }
 
 
@@ -137,9 +140,12 @@ unsigned int getMantissa(float f)
 //  PURPOSE:  To return the 0x0 when given +1, or 0x1 when given -1.
 unsigned char signToSignBit(int	sign)
 {
-	//  Your code here
+	if (sign > 0)
+	{
+		return(0x0);
+	}
 
-	return(0 /* Perhaps change this */);
+	return(0x1);
 }
 
 
@@ -149,11 +155,18 @@ unsigned char signToSignBit(int	sign)
 //	less than or equal to 'DENORMALIZED_POWER_OF_2' then it
 //	returns 'EXPONENT_DENORMALIZED_BIT_PATTERN'.  Otherwise it returns the
 //	corresponding bit pattern for 'powerOf2' given bias 'EXPONENT_BIAS'.
-unsigned char pwrOf2ToExpBits(int	powerOf2)
+unsigned char pwrOf2ToExpBits(int powerOf2)
 {
-	//  Your code here
-
-	return(0 /* Perhaps change this */);
+	if (powerOf2 >= INFINITE_POWER_OF_2)
+	{
+		return EXPONENT_INFINITE_BIT_PATTERN; 
+	}
+	else if (powerOf2 <= DENORMALIZED_POWER_OF_2)
+	{
+		return EXPONENT_DENORMALIZED_BIT_PATTERN; 
+	}
+	
+	return(powerOf2 + EXPONENT_BIAS);
 }
 
 
@@ -161,9 +174,7 @@ unsigned char pwrOf2ToExpBits(int	powerOf2)
 //	bit turned off.
 unsigned int mantissaField(unsigned int	mantissa)
 {
-	//  Your code here
-
-	return(0 /* Perhaps change this */);
+	return(mantissa & MANTISSA_MASK);
 }
 
 
@@ -197,10 +208,10 @@ float add(float f, float g)
 	int		powerOf2G = getPowerOf2(g);
 	unsigned int	mantissaF = getMantissa(f);
 	unsigned int	mantissaG = getMantissa(g);
-	unsigned int	mantissa;
-	int	   	powerOf2;
-	int		sign;
-	unsigned int diff = 0;
+	int		diff = 0;
+	int sign = 0;
+	int	   	powerOf2 = 0;
+	unsigned int	mantissa = 0;
 
 	if (signF == signG)
 	{
@@ -210,7 +221,14 @@ float add(float f, float g)
 		//
 		//  See which has the bigger power-of-2: 'f' or 'g'
 		//  Set 'diff' equal to the difference between the powers
-		diff = 0;  // diff = 0 <-- Change that 0!
+		if (powerOf2F > powerOf2G)
+		{
+			diff = powerOf2F - powerOf2G;
+		}
+		else
+		{
+			diff = powerOf2G - powerOf2F;
+		}
 
 		//  Keep this if-statement.
 		//  Unfortunately, (0x1 << 32) is 0x1, not 0x0.
@@ -218,11 +236,22 @@ float add(float f, float g)
 		if (diff > NUM_MANTISSA_BITS)
 			diff = NUM_MANTISSA_BITS;
 
-		//  Shift the mantissa of the smaller of the two numbers by 'diff'.
+		sign = signF; //signG would work too, bc they the same sign
+		//  Shift the mantissa of the smaller of the two numbers tp the right by 'diff'.
+		if (f > g)
+		{
+			mantissaG >>= diff;
+			powerOf2 = powerOf2F;
+		}
+		else
+		{
+			mantissaF >>= diff;
+			powerOf2 = powerOf2G;
+		}
 		//  Then add the mantissas.
+		mantissa = mantissaF + mantissaG;
 		//
 		//  What is the value of 'powerOf2'?  What is the value of 'sign'?
-		//
 		//  How do you detect when the mantissa overflows?
 		//  What do you do when the mantissa does overflow?
 
@@ -304,6 +333,9 @@ int	main()
 		printf("         You say  %g + %g == %g\n", f, g, add(f, g));
 		printf("The hardware says %g + %g == %g\n", f, g, f + g);
 	} while (!isZero(f) && !isZero(g));
+
+	char ch;
+	scanf_s("%c", &ch); //pause
 
 	return(EXIT_SUCCESS);
 }
