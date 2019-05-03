@@ -97,7 +97,7 @@ int isZero(float f)
 int	getSign(float f)
 {
 	unsigned int u = *(unsigned int*)&f;
-	
+
 	if ((u & SIGN_MASK) == 0)
 	{
 		return(1);
@@ -125,10 +125,10 @@ int getPowerOf2(float f)
 unsigned int getMantissa(float f)
 {
 	unsigned int mantissa = *(unsigned int*)&f;
-	mantissa = mantissa & MANTISSA_MASK; 
-	
+	mantissa = mantissa & MANTISSA_MASK;
+
 	if (f > 1e-38)
-	{ 
+	{
 		return (mantissa | MANTISSA_HIDDEN_BIT);
 	}
 
@@ -159,13 +159,13 @@ unsigned char pwrOf2ToExpBits(int powerOf2)
 {
 	if (powerOf2 >= INFINITE_POWER_OF_2)
 	{
-		return EXPONENT_INFINITE_BIT_PATTERN; 
+		return EXPONENT_INFINITE_BIT_PATTERN;
 	}
 	else if (powerOf2 <= DENORMALIZED_POWER_OF_2)
 	{
-		return EXPONENT_DENORMALIZED_BIT_PATTERN; 
+		return EXPONENT_DENORMALIZED_BIT_PATTERN;
 	}
-	
+
 	return(powerOf2 + EXPONENT_BIAS);
 }
 
@@ -209,7 +209,7 @@ float add(float f, float g)
 	unsigned int	mantissaF = getMantissa(f);
 	unsigned int	mantissaG = getMantissa(g);
 	int		diff = 0;
-	int sign = 0;
+	int		sign = 0;
 	int	   	powerOf2 = 0;
 	unsigned int	mantissa = 0;
 
@@ -250,6 +250,12 @@ float add(float f, float g)
 		}
 		//  Then add the mantissas.
 		mantissa = mantissaF + mantissaG;
+
+		//printf("%d", mantissaF & mantissaG);
+		if ((mantissaF & mantissaG) != 0)
+		{
+			powerOf2 += 1;
+		}
 		//
 		//  What is the value of 'powerOf2'?  What is the value of 'sign'?
 		//  How do you detect when the mantissa overflows?
@@ -304,6 +310,9 @@ int	main()
 	float g;
 	char text[TEXT_LEN];
 
+	//printf("%f", buildFloat(1, 1, 20971520)); 3
+	//printf("%f", buildFloat(1, 2, 2097152)); 5
+
 	do
 	{
 		printf("Please enter a floating point number or 0 to quit testing: ");
@@ -333,9 +342,6 @@ int	main()
 		printf("         You say  %g + %g == %g\n", f, g, add(f, g));
 		printf("The hardware says %g + %g == %g\n", f, g, f + g);
 	} while (!isZero(f) && !isZero(g));
-
-	char ch;
-	scanf_s("%c", &ch); //pause
 
 	return(EXIT_SUCCESS);
 }
