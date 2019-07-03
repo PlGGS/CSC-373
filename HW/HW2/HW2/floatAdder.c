@@ -1,16 +1,16 @@
 /*-------------------------------------------------------------------------*
- *---									---*
- *---		floatAdder.c						---*
- *---									---*
+ *---																	---*
+ *---	floatAdder.c	 Blake Boris		Final grade: 88%			---*
+ *---																	---*
  *---	    This file adds 2 32-bit IEEE floating point numbers with 	---*
- *---	integer operations.  Doesn't handle '+inf', '-inf' or 'NaN'	---*
- *---	properly, nor does it round properly.  Those are the only 2	---*
- *---	bugs of which I'm aware.					---*
- *---									---*
+ *---	integer operations.  Doesn't handle '+inf', '-inf' or 'NaN'		---*
+ *---	properly, nor does it round properly.  Those are the only 2		---*
+ *---	bugs of which I'm aware.										---*
+ *---																	---*
  *---	----	----	----	----	----	----	----	----	---*
- *---									---*
- *---	Version 1.0		2019 April 22		Joseph Phillips	---*
- *---									---*
+ *---																	---*
+ *---	Version 1.0		2019 April 22		Joseph Phillips				---*
+ *---																	---*
  *-------------------------------------------------------------------------*/
 
 #include <stdlib.h>
