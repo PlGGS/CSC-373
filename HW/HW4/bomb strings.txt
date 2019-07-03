@@ -1,0 +1,164 @@
+/lib64/ld-linux-x86-64.so.2
+libc.so.6
+fflush
+exit
+fopen
+__isoc99_sscanf
+signal
+puts
+stdin
+printf
+fgets
+strlen
+stdout
+__ctype_b_loc
+getenv
+atoi
+sleep
+__libc_start_main
+__gmon_start__
+GLIBC_2.3
+GLIBC_2.7
+GLIBC_2.2.5
+UH-`+`
+UH-`+`
+=y"
+***truncH
+ated***
+[]A\A]A^A_
+%s: Error: Couldn't open %s
+Usage: %s [<input_file>]
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Phase 1 defused. How about the next one?
+That's number 2.  Keep going!
+Halfway there!
+So you got that one.  Try this one.
+Good work!  On to the next...
+Public speaking is very easy.
+%d %d
+Wow! You've defused the secret stage!
+perko406.cdm.depaul.edu
+So you think you can stop the bomb with ctrl-c, do you?
+Well...
+OK. :-)
+Invalid phase%s
+%d %d %d %d %d %d
+Error: Premature EOF on stdin
+GRADE_BOMB
+Error: Input line too long
+BOOM!!!
+The bomb has blown up.
+%d %d %s
+DrEvil
+Curses, you've found the secret phase!
+But finding it and solving it are quite different...
+Congratulations! You've defused the bomb!
+;*3$"
+GCC: (GNU) 4.8.5 20150623 (Red Hat 4.8.5-36)
+crtstuff.c
+__JCR_LIST__
+deregister_tm_clones
+__do_global_dtors_aux
+completed.6355
+__do_global_dtors_aux_fini_array_entry
+frame_dummy
+__frame_dummy_init_array_entry
+bomb.c
+phases.c
+array.2935
+support.c
+sig_handler
+__FRAME_END__
+__JCR_END__
+__init_array_end
+_DYNAMIC
+__init_array_start
+__GNU_EH_FRAME_HDR
+_GLOBAL_OFFSET_TABLE_
+__libc_csu_fini
+skip
+getenv@@GLIBC_2.2.5
+phase_defused
+stdout@@GLIBC_2.2.5
+puts@@GLIBC_2.2.5
+stdin@@GLIBC_2.2.5
+_edata
+strlen@@GLIBC_2.2.5
+num_input_strings
+printf@@GLIBC_2.2.5
+phase_5
+initialize_bomb_solve
+blank_line
+phase_3
+phase_1
+invalid_phase
+node3
+__libc_start_main@@GLIBC_2.2.5
+fgets@@GLIBC_2.2.5
+explode_bomb
+node1
+__data_start
+signal@@GLIBC_2.2.5
+node5
+__gmon_start__
+fun7
+__dso_handle
+_IO_stdin_used
+host_table
+func4
+string_length
+__libc_csu_init
+fflush@@GLIBC_2.2.5
+__isoc99_sscanf@@GLIBC_2.7
+secret_phase
+infile
+__bss_start
+userid
+main
+read_line
+strings_not_equal
+phase_4
+fopen@@GLIBC_2.2.5
+phase_6
+scratch
+phase_2
+atoi@@GLIBC_2.2.5
+exit@@GLIBC_2.2.5
+bomb_id
+__TMC_END__
+node2
+node4
+sleep@@GLIBC_2.2.5
+node6
+read_six_numbers
+initialize_bomb
+__ctype_b_loc@@GLIBC_2.3
+.symtab
+.strtab
+.shstrtab
+.interp
+.note.ABI-tag
+.note.gnu.build-id
+.gnu.hash
+.dynsym
+.dynstr
+.gnu.version
+.gnu.version_r
+.rela.dyn
+.rela.plt
+.init
+.plt.got
+.text
+.fini
+.rodata
+.eh_frame_hdr
+.eh_frame
+.init_array
+.fini_array
+.jcr
+.dynamic
+.got.plt
+.data
+.bss
+.comment
